@@ -1,0 +1,34 @@
+@font-face {
+    font-family: LEDDisplay;
+    src: url(font/TheLEDDisplay.ttf);
+  }
+
+* {
+    background-color: darkgray;
+}
+.LED-font {
+    font-family: 'LEDDisplay';
+}
+
+#title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+#start-button-div {
+    text-align: center;
+}
+
+#start-button {
+    background-color: lightgreen
+}
+
+#author {
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
