@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="app.js"></script>
 </head>
@@ -17,11 +17,14 @@
             <p>Second, input your name(s). Next click "Start Game".</p>
             <p></p>
         </div>
-        <h3>1 Player or 2 Players?</h3>
+        <div id="player-count-div">
+            <p id="player-count">Player against Computer</p>
+            <p id="player-count">Player against Player</p>
+        </div>
         <div id="name-input-div">
             <input type="text" placeholder="Input Player Name Here" id="name-input" class="helvetica">
         </div>
-        <h3 id="player-char-status">Player 1: X | Player 2: X</h3>
+        <h3 id="player-char-status">Player 1: X | Player 2: O</h3>
         <table>
             <tr>
                 <td>X</td>
@@ -39,8 +42,10 @@
                 <td>X</td>
             </tr>
         </table>
-        <div id="start-button-div">
-            <button id="start-button" type="button" class="helvetica">Start Game</button>            
+        <div id="button-panel-div">
+            <button id="start-button" type="button" class="helvetica">Start Game</button> 
+            <button id="restart-button" type="button" class="helvetica">Restart Game</button>       
+            <button id="reset-button" type="button" class="helvetica">Reset Game</button>  
         </div>
     </main>
     <footer>
