@@ -1,15 +1,23 @@
-// SNAKE
+// tic tac toe
 
-// As a user playing the game I want to:
-// - start the game by pressing a Start button
-// - use my arrow keys to change the direction of the snake
-// - have the snake grow correctly when it eats the apple
-// - have the game end if the snake tries to eat itself
-// - have the game end if the snake runs into a wall
-// - see how long my snake was when the game ended
-// - start the game over without having to reset the browser
+// As users playing a two player game we want to:
+// enter our names and have them displayed
+// have our order chosen for us by the game
+// take turns placing our marks in empty spaces
+// not be able to place our marks in an occupied space
+// be told when a move causes a player to win, or to draw
+// start the game over without having to reset the browser
 
 
-// As a user playing the game I would be delighted if I:
-// - can set the difficulty (speed of snake)
-// - can keep track of my stats (maximum points, average points, etc.) between games
+// As a user playing a one player game I want to:
+// see the name 'Computer' displayed as my opponent
+// have the Computer player make moves as if it were a human player with the correct mark in an empty space
+
+const gameState = {
+    players: ['x', 'o'],
+    board: [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ]
+  }

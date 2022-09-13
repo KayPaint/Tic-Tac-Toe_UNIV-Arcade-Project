@@ -4,19 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="app.js"></script>
 </head>
 <body>       
     <main>
-        <h1 id="title" class="LED-font">Snake</h1> 
+        <h1 id="title">Tic-Tac-Toe</h1> 
+        <div id="instructions-div">
+            <p>"How do I get started?"</p>
+            <p>First, select whether you are playing alone, or with another person.</p>
+            <p>Second, input your name(s). Next click "Start Game".</p>
+            <p></p>
+        </div>
+        <h3>1 Player or 2 Players?</h3>
+        <div id="name-input-div">
+            <input type="text" placeholder="Input Player Name Here" id="name-input" class="helvetica">
+        </div>
+        <h3 id="player-char-status">Player 1: X | Player 2: X</h3>
+        <table>
+            <tr>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>X</td>
+                <td>X</td>
+                <td>X</td>
+            </tr>
+        </table>
         <div id="start-button-div">
-            <button id="start-button" class="LED-font" type="button">Start Game</button>            
+            <button id="start-button" type="button" class="helvetica">Start Game</button>            
         </div>
     </main>
     <footer>
-        <h3 id="author" class="LED-font">By: Kelan Painter</h3>
+        <h3 id="author">By: Kelan Painter</h3>
     </footer>
 </body>
 </html>
