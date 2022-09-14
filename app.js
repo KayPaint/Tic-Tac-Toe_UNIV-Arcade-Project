@@ -13,7 +13,6 @@
 // see the name 'Computer' displayed as my opponent
 // have the Computer player make moves as if it were a human player with the correct mark in an empty space 
 
-// user selects PVE or PVP, choice is stored in variable
 // if user selects PVE, prompt player to enter their name
     // user name replaces Player 1
     // "Computer" replaces Player 2
@@ -22,12 +21,44 @@
     // user enters second name and presses Enter Name, updating Player 2
 // If player count, player names entered correctly, on start button click, run game function
 
-const gameState = {
-    players: ['x', 'o'],
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ]
-  }
+// const gameState = {
+//     players: ['x', 'o'],
+//     board: [
+//       [null, null, null],
+//       [null, null, null],
+//       [null, null, null]
+//     ]
+//   }
 
+function onePlayer() {
+    let playerVSComputer = document.getElementById("player-vs-computer");
+    let playerVSPlayer = document.getElementById("player-vs-player");
+    let playerTwoNameDiv = document.getElementById("playertwo-name-div");
+
+    if (playerVSPlayer.checked = true) {
+        playerVSPlayer.checked = false;
+        playerVSComputer.checked = true;
+    }
+
+    if (playerVSComputer.checked = true) {
+        playerTwoNameDiv.style.visibility = 'hidden';
+    } 
+}
+
+function twoPlayer() {
+    let playerVSComputer = document.getElementById("player-vs-computer");
+    let playerVSPlayer = document.getElementById("player-vs-player");
+    let playerTwoNameDiv = document.getElementById("playertwo-name-div");
+
+    if (playerVSComputer.checked = true) {
+        playerVSComputer.checked = false;
+        playerVSPlayer.checked = true;
+    }
+
+    if (playerVSComputer.checked = true) {
+        playerVSComputer.checked = false;
+        playerVSPlayer.checked = true;
+    }
+
+    playerTwoNameDiv.style.visibility = 'visible';
+}
