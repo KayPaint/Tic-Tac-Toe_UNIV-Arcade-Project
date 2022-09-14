@@ -57,3 +57,17 @@ function twoPlayer() {
 
     playerTwoNameDiv.style.visibility = 'visible';
 }
+
+// function takes in input text
+// and changes innerHTML
+
+// when you press enter name button
+    // function takes in corresponding input and updates name status
+
+function updateNameOne() {
+    let playerNameStatus = document.getElementById("player-name-status")
+}
+
+function updateNameTwo() {
+    let playerNameStatus = document.getElementById("player-name-status")
+}
