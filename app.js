@@ -55,10 +55,5 @@ function twoPlayer() {
         playerVSPlayer.checked = true;
     }
 
-    if (playerVSComputer.checked = true) {
-        playerVSComputer.checked = false;
-        playerVSPlayer.checked = true;
-    }
-
     playerTwoNameDiv.style.visibility = 'visible';
 }
