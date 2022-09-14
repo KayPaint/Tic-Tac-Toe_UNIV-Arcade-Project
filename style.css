@@ -17,7 +17,7 @@
     font-size: 3rem;
 }
 
-#player-char-status {
+#player-name-status {
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ table {
     text-align: center;
 }
 
-#start-button, #restart-button, #reset-button, #enter-name-button {
+#start-button, #restart-button, #reset-button, #enter-name-button-one, #enter-name-button-two {
     background-color: lightgreen;
 }
 
