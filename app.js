@@ -11,7 +11,16 @@
 
 // As a user playing a one player game I want to:
 // see the name 'Computer' displayed as my opponent
-// have the Computer player make moves as if it were a human player with the correct mark in an empty space
+// have the Computer player make moves as if it were a human player with the correct mark in an empty space 
+
+// user selects PVE or PVP, choice is stored in variable
+// if user selects PVE, prompt player to enter their name
+    // user name replaces Player 1
+    // "Computer" replaces Player 2
+// if user selects PVP, prompt player to enter their names
+    // user enters first name and presses Enter Name, updating Player 1
+    // user enters second name and presses Enter Name, updating Player 2
+// If player count, player names entered correctly, on start button click, run game function
 
 const gameState = {
     players: ['x', 'o'],
@@ -21,3 +30,4 @@ const gameState = {
       [null, null, null]
     ]
   }
+

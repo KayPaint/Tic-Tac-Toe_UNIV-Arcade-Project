@@ -14,15 +14,17 @@
         <div id="instructions-div">
             <p>"How do I get started?"</p>
             <p>First, select whether you are playing alone, or with another person.</p>
-            <p>Second, input your name(s). Next click "Start Game".</p>
-            <p></p>
+            <p>Second, input your name(s), and click "Start Game".</p>
         </div>
         <div id="player-count-div">
-            <p id="player-count">Player against Computer</p>
-            <p id="player-count">Player against Player</p>
-        </div>
+            <input type="radio" id="player-vs-computer" value="PVE">
+            <label for="player-vs-computer" class="helvetica">Player VS Computer</label>
+            <input type="radio" id="player-vs-player" value="PVP">
+            <label for="player-vs-player" class="helvetica">Player VS Player</label>
+        </div>  
         <div id="name-input-div">
             <input type="text" placeholder="Input Player Name Here" id="name-input" class="helvetica">
+            <button id="enter-name-button" type="button" class="helvetica">Enter Name</button>
         </div>
         <h3 id="player-char-status">Player 1: X | Player 2: O</h3>
         <table>
