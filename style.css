@@ -70,6 +70,11 @@ table {
     text-align: center;
 }
 
+#player-name-status-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 #name-input {
     background-color: aliceblue;
 }
