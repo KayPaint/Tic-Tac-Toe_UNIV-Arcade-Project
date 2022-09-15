@@ -75,7 +75,7 @@ table {
     flex-direction: row;
     justify-content: space-evenly;
 }
-#name-input {
+#name-one-input, #name-two-input {
     background-color: aliceblue;
 }
 
