@@ -65,7 +65,7 @@ function twoPlayer() {
         // Show visibility of the second name input
         playerTwoNameDiv.style.visibility = 'visible';
         // Reset second name status to two player
-        playerTwoNameStatus.innerText = "Player 2: X";
+        playerTwoNameStatus.innerText = "Player 2: O";
     } 
 }
 
