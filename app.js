@@ -8,12 +8,14 @@
 // [] be told when a move causes a player to win, or to draw
 // [] start the game over without having to reset the browser
 
-
 // As a user playing a one player game I want to:
 // [Y] see the name 'Computer' displayed as my opponent
 // [] have the Computer player make moves as if it were a human player with the correct mark in an empty space 
 
+
+// *************************************************
 // ********** NUMBER OF PLAYERS SELECTION **********
+// *************************************************
 
 // This function hides the option to input a second name
 function onePlayer() {
@@ -69,30 +71,46 @@ function twoPlayer() {
     } 
 }
 
-// ********** UPDATING PLAYER NAMES **********
 
+// *******************************************
+// ********** UPDATING PLAYER NAMES **********
+// *******************************************
+
+// This function updates the player one name
 function updateNameOne() {
+    // Assigning relevant HTML elements as variables
     let playerOneName = document.getElementById("playerone-name-status");
     let playerOneInput = document.getElementById("name-one-input");
 
+    // Updating innerText with input value
     playerOneName.innerText = playerOneInput.value + " " + ": X";
 
 }
 
 function updateNameTwo() {
+    // Assigning relevant HTML elements as variables
     let playerTwoName = document.getElementById("playertwo-name-status");
     let playerTwoInput = document.getElementById("name-two-input");
 
+    // Updating innerText with input value
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
 
-// **********  **********
 
-// const gameState = {
-//     players: ['x', 'o'],
-//     board: [
-//       [null, null, null],
-//       [null, null, null],
-//       [null, null, null]
-//     ]
-//   }
+// ********************************
+// ********** GAME LOGIC **********
+// ********************************
+
+const gameState = {
+    players: ['x', 'o'],
+    board: [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ]
+  }
+
+  
+// ******************************************
+// ********** GAME EVENT LISTENERS **********
+// ******************************************
