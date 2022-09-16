@@ -65,16 +65,16 @@ function twoPlayer() {
     // function takes in corresponding input and updates name status
 function updateNameOne() {
     //let playerOneNameStatus = document.getElementById("playerone-name-status");
-    let playerOneInput = document.getElementById("name-one-input").value;
-    let playerOneName = document.getElementById("playerone-name-status").innerHTML;
+    let playerOneName = document.getElementById("playerone-name-status");
+    let playerOneInput = document.getElementById("name-one-input");
 
-   
+    playerOneName.innerText = playerOneInput.value + " " + ": X";
 
 }
 
 function updateNameTwo() {
-    let playerTwoNameStatus = document.getElementById("playertwo-name-status");
+    let playerTwoName = document.getElementById("playertwo-name-status");
     let playerTwoInput = document.getElementById("name-two-input");
 
-    playerTwoNameStatus.innerHTML(playerTwoInput);
+    playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
