@@ -1,26 +1,17 @@
-// tic tac toe
+// Tic-Tac-Toe
 
 // As users playing a two player game we want to:
-// enter our names and have them displayed
-// have our order chosen for us by the game
-// take turns placing our marks in empty spaces
-// not be able to place our marks in an occupied space
-// be told when a move causes a player to win, or to draw
-// start the game over without having to reset the browser
+// [Y] enter our names and have them displayed
+// [] have our order chosen for us by the game
+// [] take turns placing our marks in empty spaces
+// [] not be able to place our marks in an occupied space
+// [] be told when a move causes a player to win, or to draw
+// [] start the game over without having to reset the browser
 
 
 // As a user playing a one player game I want to:
-// see the name 'Computer' displayed as my opponent
-// have the Computer player make moves as if it were a human player with the correct mark in an empty space 
-
-// if user selects PVE, prompt player to enter their name
-    // user name replaces Player 1
-    // "Computer" replaces Player 2
-// if user selects PVP, prompt player to enter their names
-    // user enters first name and presses Enter Name, updating Player 1
-    // user enters second name and presses Enter Name, updating Player 2
-// If player count, player names entered correctly, on start button click, run game function
-
+// [Y] see the name 'Computer' displayed as my opponent
+// [] have the Computer player make moves as if it were a human player with the correct mark in an empty space 
 
 // ********** NUMBER OF PLAYERS SELECTION **********
 
@@ -32,6 +23,7 @@ function onePlayer() {
     let playerVSComputer = document.getElementById("player-vs-computer");
     let playerVSPlayer = document.getElementById("player-vs-player");
     let playerTwoNameDiv = document.getElementById("playertwo-name-div");
+    let playerTwoNameStatus = document.getElementById("playertwo-name-status");
 
     // If the user has selected Player VS Player
     if (playerVSPlayer.checked = true) {
@@ -45,6 +37,8 @@ function onePlayer() {
     if (playerVSComputer.checked = true) {
         // Hide visibility of the second name input
         playerTwoNameDiv.style.visibility = 'hidden';
+        // Change second name status to "Computer"
+        playerTwoNameStatus.innerText = "Computer" + " " + ": X";
     } 
 }
 
@@ -56,6 +50,7 @@ function twoPlayer() {
     let playerVSComputer = document.getElementById("player-vs-computer");
     let playerVSPlayer = document.getElementById("player-vs-player");
     let playerTwoNameDiv = document.getElementById("playertwo-name-div");
+    let playerTwoNameStatus = document.getElementById("playertwo-name-status");
 
     // If the user has selected Player VS Computer
     if (playerVSComputer.checked = true) {
@@ -69,8 +64,12 @@ function twoPlayer() {
     if (playerVSPlayer.checked = true) {
         // Show visibility of the second name input
         playerTwoNameDiv.style.visibility = 'visible';
+        // Reset second name status to two player
+        playerTwoNameStatus.innerText = "Player 2: X";
     } 
 }
+
+// ********** UPDATING PLAYER NAMES **********
 
 function updateNameOne() {
     let playerOneName = document.getElementById("playerone-name-status");
@@ -86,6 +85,8 @@ function updateNameTwo() {
 
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
+
+// **********  **********
 
 // const gameState = {
 //     players: ['x', 'o'],
