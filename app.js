@@ -21,50 +21,58 @@
     // user enters second name and presses Enter Name, updating Player 2
 // If player count, player names entered correctly, on start button click, run game function
 
-// const gameState = {
-//     players: ['x', 'o'],
-//     board: [
-//       [null, null, null],
-//       [null, null, null],
-//       [null, null, null]
-//     ]
-//   }
 
+// ********** NUMBER OF PLAYERS SELECTION **********
+
+// This function hides the option to input a second name
 function onePlayer() {
+    // When the radio button "Player VS Computer" is clicked, run this function
+
+    // Assigning relevant HTML elements as variables
     let playerVSComputer = document.getElementById("player-vs-computer");
     let playerVSPlayer = document.getElementById("player-vs-player");
     let playerTwoNameDiv = document.getElementById("playertwo-name-div");
 
+    // If the user has selected Player VS Player
     if (playerVSPlayer.checked = true) {
+        // Set Player VS Player.checked to false
         playerVSPlayer.checked = false;
+        // Set Player VS Computer.checked to true
         playerVSComputer.checked = true;
     }
 
+    // Next, if Player VS Computer.checked is true
     if (playerVSComputer.checked = true) {
+        // Hide visibility of the second name input
         playerTwoNameDiv.style.visibility = 'hidden';
     } 
 }
 
+// This function negates the action by function onePlayer
 function twoPlayer() {
+    // When the radio button "Player VS Player" is clicked, run this function
+
+    // Assigning relevant HTML elements as variables
     let playerVSComputer = document.getElementById("player-vs-computer");
     let playerVSPlayer = document.getElementById("player-vs-player");
     let playerTwoNameDiv = document.getElementById("playertwo-name-div");
 
+    // If the user has selected Player VS Computer
     if (playerVSComputer.checked = true) {
+        // Set Player VS Computer.checked to false
         playerVSComputer.checked = false;
+        // Set Player VS Player.checked to true
         playerVSPlayer.checked = true;
     }
 
-    playerTwoNameDiv.style.visibility = 'visible';
+    // Next, if Player VS Player is checked
+    if (playerVSPlayer.checked = true) {
+        // Show visibility of the second name input
+        playerTwoNameDiv.style.visibility = 'visible';
+    } 
 }
 
-// function takes in input text
-// and changes innerHTML
-
-// when you press enter name button
-    // function takes in corresponding input and updates name status
 function updateNameOne() {
-    //let playerOneNameStatus = document.getElementById("playerone-name-status");
     let playerOneName = document.getElementById("playerone-name-status");
     let playerOneInput = document.getElementById("name-one-input");
 
@@ -78,3 +86,12 @@ function updateNameTwo() {
 
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
+
+// const gameState = {
+//     players: ['x', 'o'],
+//     board: [
+//       [null, null, null],
+//       [null, null, null],
+//       [null, null, null]
+//     ]
+//   }
