@@ -83,8 +83,6 @@ function buildInitialState() {
     ];
 }
 
-
-
 // (State -> HTML)
 // Reads state object
 // Writes/modifies HTML
@@ -112,8 +110,6 @@ function onBoardClick() {
         event.target.innerText = "X";
     });
 }
-
-
 
 // ********** HELPER FUNCTIONS **********
 
@@ -184,6 +180,7 @@ function swapTurns() {
     }
 }
 
+// ********** FUNCTION CALL **********
 buildInitialState()
 renderState()
 onBoardClick()
