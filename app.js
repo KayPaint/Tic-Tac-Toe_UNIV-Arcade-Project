@@ -69,8 +69,13 @@ let state = {};
 
 // Function builds initial game state
 function buildInitialState() {
+    
     state.players = ['X', 'O'];
-    state.currentPlayer = 'X'
+
+    // Initially, currentPlayer set to 0, AKA "X"
+    state.currentPlayer = 0;
+
+    // Initial board
     state.board = [
       [null, null, null],
       [null, null, null],
@@ -89,8 +94,8 @@ function renderState() {
     for (let i = 0; i < 9; i++) {
         const cellElement = document.createElement("div");
         cellDiv.appendChild(cellElement);
-        cellElement.setAttribute('id', [i])
-        cellElement.classList.add("cell")
+        cellElement.setAttribute('id', [i]);
+        cellElement.classList.add("cell");
     }
 
 }
@@ -100,7 +105,12 @@ function renderState() {
 // Writes/modifies State
 // After modification trigger render
 function onBoardClick() {
-
+    cellDiv.addEventListener('click', function (event) {
+        if (event.target.className !== "cell") {
+            return;
+        }
+        event.target.innerText = "X";
+    });
 }
 
 
@@ -155,6 +165,7 @@ function updateNameOne() {
     playerOneName.innerText = playerOneInput.value + " " + ": X";
 }
 
+// This function updates the player two name
 function updateNameTwo() {
     // Updating innerText with input value
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
