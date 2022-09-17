@@ -12,20 +12,96 @@
 // [Y] see the name 'Computer' displayed as my opponent
 // [] have the Computer player make moves as if it were a human player with the correct mark in an empty space 
 
+// What are the winning positions
+    // // Board
+    // [
+    //     [0, 1, 2],
+    //     [3, 4, 5],
+    //     [6, 7, 8],
+    // ]
+    // // 3 Horizontal
+    //     [0, 1, 2] // Win
+    //     [3, 4, 5] // Win
+    //     [4, 5, 6] // Win
+    // // 3 Vertical
+    //     [0, 3, 6] // Win
+    //     [1, 4, 7] // Win
+    //     [2, 5, 8] // Win
+    // // 2 Diagonal
+    //     [0, 4, 8] // Win
+    //     [2, 4, 6] // Win
 
-// *************************************************
-// ********** NUMBER OF PLAYERS SELECTION **********
-// *************************************************
+
+// Gameplay Flow
+    // User selects 1 player or 2 players
+    // User(s) enter names
+    // User clicks "Start Game"
+    // buildInitialState runs
+
+    // Player X always starts first  
+
+    // Player 1 "X" clicks a square, adding X to that square
+    // function checks for any win situations, otherwise change turn
+
+    // Player 2 "O" clicks a square, adding O to that square
+    // function checks for any win situations, otherwise change turn
+
+    // This continues
+    // Upon win condition, display alert telling who won
+
+    // "Reset Game" resets to initialState
+
+// ********** DOM SELECTORS **********
+
+let playerVSComputer = document.getElementById("player-vs-computer");
+let playerVSPlayer = document.getElementById("player-vs-player");
+let playerTwoNameDiv = document.getElementById("playertwo-name-div");
+let playerTwoNameStatus = document.getElementById("playertwo-name-status");
+let playerOneName = document.getElementById("playerone-name-status");
+let playerOneInput = document.getElementById("name-one-input");
+let playerTwoName = document.getElementById("playertwo-name-status");
+let playerTwoInput = document.getElementById("name-two-input");
+
+
+// ********** STATE **********
+
+let state = {};
+
+// Function builds initial game state
+function buildInitialState() {
+    state.players = ['X', 'O'];
+    state.currentPlayer = 'X'
+    state.board = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ];
+}
+
+// (State -> HTML)
+// Reads state object
+// Writes/modifies HTML
+function renderState() {
+
+}
+
+// (User Input -> State)
+// Reads HTML
+// Writes/modifies State
+// After modification trigger render
+function onBoardClick() {
+    
+}
+
+function updateCell() {
+
+}
+
+// ********** HELPER FUNCTIONS **********
 
 // This function hides the option to input a second name
 function onePlayer() {
     // When the radio button "Player VS Computer" is clicked, run this function
-
-    // Assigning relevant HTML elements as variables
-    let playerVSComputer = document.getElementById("player-vs-computer");
-    let playerVSPlayer = document.getElementById("player-vs-player");
-    let playerTwoNameDiv = document.getElementById("playertwo-name-div");
-    let playerTwoNameStatus = document.getElementById("playertwo-name-status");
 
     // If the user has selected Player VS Player
     if (playerVSPlayer.checked = true) {
@@ -48,12 +124,6 @@ function onePlayer() {
 function twoPlayer() {
     // When the radio button "Player VS Player" is clicked, run this function
 
-    // Assigning relevant HTML elements as variables
-    let playerVSComputer = document.getElementById("player-vs-computer");
-    let playerVSPlayer = document.getElementById("player-vs-player");
-    let playerTwoNameDiv = document.getElementById("playertwo-name-div");
-    let playerTwoNameStatus = document.getElementById("playertwo-name-status");
-
     // If the user has selected Player VS Computer
     if (playerVSComputer.checked = true) {
         // Set Player VS Computer.checked to false
@@ -71,46 +141,13 @@ function twoPlayer() {
     } 
 }
 
-
-// *******************************************
-// ********** UPDATING PLAYER NAMES **********
-// *******************************************
-
 // This function updates the player one name
 function updateNameOne() {
-    // Assigning relevant HTML elements as variables
-    let playerOneName = document.getElementById("playerone-name-status");
-    let playerOneInput = document.getElementById("name-one-input");
-
     // Updating innerText with input value
     playerOneName.innerText = playerOneInput.value + " " + ": X";
-
 }
 
 function updateNameTwo() {
-    // Assigning relevant HTML elements as variables
-    let playerTwoName = document.getElementById("playertwo-name-status");
-    let playerTwoInput = document.getElementById("name-two-input");
-
     // Updating innerText with input value
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
-
-
-// ********************************
-// ********** GAME LOGIC **********
-// ********************************
-
-const gameState = {
-    players: ['x', 'o'],
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ]
-  }
-
-  
-// ******************************************
-// ********** GAME EVENT LISTENERS **********
-// ******************************************
