@@ -171,6 +171,19 @@ function updateNameTwo() {
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
 
+// This function switches turns between players
+function swapTurns() {
+    // currentPlayer initializes at 0, AKA player "X"
+
+    // If currentPlayer is 0, set it to 1
+    // If currentPlayer is 1, set it to 0
+    if (state.currentPlayer === 0) {
+        return state.currentPlayer += 1;
+    } else if (state.currentPlayer === 1) {
+        return state.currentPlayer -= 1;
+    }
+}
+
 buildInitialState()
 renderState()
 onBoardClick()
