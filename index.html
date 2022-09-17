@@ -12,9 +12,9 @@
         <h1 id="title">Tic-Tac-Toe</h1> 
         <div id="instructions-div">
             <p>"How do I get started?"</p>
-            <p>First, select whether you are playing alone, or with another person.</p>
-            <p>Second, input your name(s), and click "Start Game".</p>
-            <p>Player "X" will go first.</p>
+            <p>FIRST, select whether you are playing alone, or with another person.</p>
+            <p>SECOND, input your name(s), and for each name, click "Enter Name".</p>
+            <p>THIRD, click "Start Game" to begin. "X" will always play first.</p>
         </div>
         <div id="player-count-div">
             <input type="radio" id="player-vs-computer" name="player-count" onclick="onePlayer()">
@@ -34,27 +34,12 @@
             <h3 id="playerone-name-status">Player 1: X</h3>
             <h3 id="playertwo-name-status">Player 2: O</h3>
         </div>
-        <table>
-            <tr>
-                <td>X</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td>X</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-            <tr>
-                <td>X</td>
-                <td>X</td>
-                <td>X</td>
-            </tr>
-        </table>
+        <div id="cell-div">
+            
+        </div>
         <div id="button-panel-div">
-            <button id="start-button" type="button" class="helvetica">Start Game</button> 
-            <button id="restart-button" type="button" class="helvetica">Restart Game</button>       
-            <button id="reset-button" type="button" class="helvetica">Reset Game</button>  
+            <button id="start-button" type="button" class="helvetica">Start Game</button>  
+            <button id="reset-button" type="button" class="helvetica">Reset Game</button> 
         </div>
     </main>
     <footer>
