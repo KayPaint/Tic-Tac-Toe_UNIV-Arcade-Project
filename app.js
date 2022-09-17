@@ -61,7 +61,7 @@ let playerOneName = document.getElementById("playerone-name-status");
 let playerOneInput = document.getElementById("name-one-input");
 let playerTwoName = document.getElementById("playertwo-name-status");
 let playerTwoInput = document.getElementById("name-two-input");
-
+let cellDiv = document.getElementById("cell-div");
 
 // ********** STATE **********
 
@@ -78,10 +78,20 @@ function buildInitialState() {
     ];
 }
 
+
+
 // (State -> HTML)
 // Reads state object
 // Writes/modifies HTML
 function renderState() {
+
+// This loop creates the div cells for the game
+    for (let i = 0; i < 9; i++) {
+        const cellElement = document.createElement("div");
+        cellDiv.appendChild(cellElement);
+        cellElement.setAttribute('id', [i])
+        cellElement.classList.add("cell")
+    }
 
 }
 
@@ -90,12 +100,10 @@ function renderState() {
 // Writes/modifies State
 // After modification trigger render
 function onBoardClick() {
-    
-}
-
-function updateCell() {
 
 }
+
+
 
 // ********** HELPER FUNCTIONS **********
 
@@ -151,3 +159,12 @@ function updateNameTwo() {
     // Updating innerText with input value
     playerTwoName.innerText = playerTwoInput.value + " " + ": O";
 }
+
+buildInitialState()
+renderState()
+onBoardClick()
+
+console.log(state.board)
+console.log(state.board[0])
+console.log(state.board[0][0])
+console.log(state.board[1][1])
