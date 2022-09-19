@@ -230,10 +230,21 @@ function swapTurns() {
         return state.currentPlayer -= 1;
     }
 }
-
+    //     [0, 1, 2] // Win
+    //     [3, 4, 5] // Win
+    //     [4, 5, 6] // Win
 function checkForWin() {
+
+}
+
+function horizontalConditions() {
+    let winOne = [[1], [1], [2]];
+    let winTwo = [[3], [4], [5]];
+    let winThree = [[4], [5], [6]];
+
     
 }
+
 
 // EVENT LISTENERS
 
