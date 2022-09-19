@@ -51,7 +51,7 @@
 
     // "Reset Game" resets to initialState
 
-// ********** DOM SELECTORS **********
+// DOM SELECTORS
 
 let playerVSComputer = document.getElementById("player-vs-computer");
 let playerVSPlayer = document.getElementById("player-vs-player");
@@ -62,9 +62,9 @@ let playerOneInput = document.getElementById("name-one-input");
 let playerTwoName = document.getElementById("playertwo-name-status");
 let playerTwoInput = document.getElementById("name-two-input");
 let cellDiv = document.getElementById("cell-div");
-let gridBoxes = document.getElementsByClassName("cell")
+let gridBoxes = document.getElementsByClassName("cell");
 
-// ********** STATE **********
+//  STATE
 
 let state = {};
 
@@ -79,31 +79,55 @@ function buildInitialState() {
 
     // Initial board
     state.board = [
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
-        { flipped: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
+        { name: null, marked: false },
     ];
+
+    
+    state.marks = [
+        // Stores plays made by Player One, AKA currentPlayer = 0
+        [],
+        // Stores plays made by Player Two, AKA currentPlayer = 1
+        []
+    ]
+    
+
 }
 
 // (State -> HTML)
 // Reads state object
 // Writes/modifies HTML
 function renderState() {
+    // Clear container HTML
+    cellDiv.innerHTML = "";
     // This loop creates the div cells for the game
-    for (let i = 0; gridBoxes.length < 9; i++) {
-        const cellElement = document.createElement("div");
+    for (i = 0; i < state.board.length; i++) {
+        // Create a div element
+        let cellElement = document.createElement("div");
+        // Append the new div element to the container
         cellDiv.appendChild(cellElement);
-        cellElement.setAttribute('id', [i]);
+        // Add numbered IDs to the div
+        cellElement.setAttribute('id', [i])
+        // Add the div to class="cell"
         cellElement.classList.add("cell");
+        // Add a data index of current loop index
         cellElement.dataset.index = [i];
     }
-
+    // This was WIP
+    // if (state.board.marked = true) {
+    //     if (state.currentPlayer = 0) {
+    //         cellDiv.children.innerText = 'X';
+    //     } else if (state.currentPlayer = 1) {
+    //         cellDiv.children.innerText = 'O';
+    //     }
+    // }
 }
 
 // (User Input -> State)
@@ -111,21 +135,35 @@ function renderState() {
 // Writes/modifies State
 // After modification trigger render
 function onBoardClick(clickedCellIdx) {
-    let markedCell = getFlipped(clickedCellIdx);
-    markedCell.flipped = true;
-    markedCell.innerText = "X";
 
+    let cell = state.board[clickedCellIdx];
+
+    // Sets cell 'marked' property to true;
+    cell.marked = true;
+
+    // gives cell name the current player
+    //cell.name = state.currentPlayer;
+
+    // if current player is X, push their move into the corresponding marks array
+    if (state.currentPlayer = 0) {
+        state.marks[0].push(clickedCellIdx); 
+    }
+    
+    if (state.currentPlayer = 1) {
+        state.marks[1].push(clickedCellIdx);
+    }
+
+    // Switch Turns
+    swapTurns()
+  
+    // Run render
     renderState()
 }
 
-function getFlipped(clickedCellIdx) {
-    for (let i = clickedCellIdx; i < state.board.length; i++) {
-        return state.board[i].flipped;
-    }    
-}
 
 // HELPER FUNCTIONS
 
+// This function checks the board for win conditions
 // This function hides the option to input a second name
 function onePlayer() {
     // When the radio button "Player VS Computer" is clicked, run this function
@@ -193,18 +231,21 @@ function swapTurns() {
     }
 }
 
+function checkForWin() {
+    
+}
+
 // EVENT LISTENERS
 
 cellDiv.addEventListener('click', function (event) {
     if (event.target.className !== "cell") {
         return;
     }
-    clickedCellIdx = event.target.dataset.index;
+    clickedCellIdx = event.target.id;
     onBoardClick(clickedCellIdx);
 
     renderState();
 });
-
 
 // FUNCTION CALL
 buildInitialState()
