@@ -2,7 +2,7 @@
 
 // As users playing a two player game we want to:
 // [Y] enter our names and have them displayed
-// [] have our order chosen for us by the game
+// [Y] have our order chosen for us by the game
 // [] take turns placing our marks in empty spaces
 // [] not be able to place our marks in an occupied space
 // [] be told when a move causes a player to win, or to draw
@@ -62,6 +62,7 @@ let playerOneInput = document.getElementById("name-one-input");
 let playerTwoName = document.getElementById("playertwo-name-status");
 let playerTwoInput = document.getElementById("name-two-input");
 let cellDiv = document.getElementById("cell-div");
+let gridBoxes = document.getElementsByClassName("cell")
 
 // ********** STATE **********
 
@@ -70,6 +71,7 @@ let state = {};
 // Function builds initial game state
 function buildInitialState() {
     
+    //                0    1
     state.players = ['X', 'O'];
 
     // Initially, currentPlayer set to 0, AKA "X"
@@ -77,9 +79,15 @@ function buildInitialState() {
 
     // Initial board
     state.board = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
+        { flipped: false },
     ];
 }
 
@@ -87,13 +95,13 @@ function buildInitialState() {
 // Reads state object
 // Writes/modifies HTML
 function renderState() {
-
-// This loop creates the div cells for the game
-    for (let i = 0; i < 9; i++) {
+    // This loop creates the div cells for the game
+    for (let i = 0; gridBoxes.length < 9; i++) {
         const cellElement = document.createElement("div");
         cellDiv.appendChild(cellElement);
         cellElement.setAttribute('id', [i]);
         cellElement.classList.add("cell");
+        cellElement.dataset.index = [i];
     }
 
 }
@@ -102,16 +110,21 @@ function renderState() {
 // Reads HTML
 // Writes/modifies State
 // After modification trigger render
-function onBoardClick() {
-    cellDiv.addEventListener('click', function (event) {
-        if (event.target.className !== "cell") {
-            return;
-        }
-        event.target.innerText = "X";
-    });
+function onBoardClick(clickedCellIdx) {
+    let markedCell = getFlipped(clickedCellIdx);
+    markedCell.flipped = true;
+    markedCell.innerText = "X";
+
+    renderState()
 }
 
-// ********** HELPER FUNCTIONS **********
+function getFlipped(clickedCellIdx) {
+    for (let i = clickedCellIdx; i < state.board.length; i++) {
+        return state.board[i].flipped;
+    }    
+}
+
+// HELPER FUNCTIONS
 
 // This function hides the option to input a second name
 function onePlayer() {
@@ -180,12 +193,19 @@ function swapTurns() {
     }
 }
 
-// ********** FUNCTION CALL **********
+// EVENT LISTENERS
+
+cellDiv.addEventListener('click', function (event) {
+    if (event.target.className !== "cell") {
+        return;
+    }
+    clickedCellIdx = event.target.dataset.index;
+    onBoardClick(clickedCellIdx);
+
+    renderState();
+});
+
+
+// FUNCTION CALL
 buildInitialState()
 renderState()
-onBoardClick()
-
-console.log(state.board)
-console.log(state.board[0])
-console.log(state.board[0][0])
-console.log(state.board[1][1])
