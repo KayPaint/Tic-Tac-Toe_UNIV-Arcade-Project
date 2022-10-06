@@ -3,10 +3,10 @@
 // As users playing a two player game we want to:
 // [Y] enter our names and have them displayed
 // [Y] have our order chosen for us by the game
-// [] take turns placing our marks in empty spaces
-// [] not be able to place our marks in an occupied space
+// [Y] take turns placing our marks in empty spaces
+// [Y] not be able to place our marks in an occupied space
 // [] be told when a move causes a player to win, or to draw
-// [] start the game over without having to reset the browser
+// [Y] start the game over without having to reset the browser
 
 // As a user playing a one player game I want to:
 // [Y] see the name 'Computer' displayed as my opponent
@@ -238,21 +238,33 @@ function checkHorizontal() {
     //     [6, 7, 8] 
 
     if (state.board[0].owner === "X" && state.board[1].owner === "X" && state.board[2].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[0].owner === "O" && state.board[1].owner === "O" && state.board[2].owner === "0") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     } 
     
     if (state.board[3].owner === "X" && state.board[4].owner === "X" && state.board[5].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[3].owner === "O" && state.board[4].owner === "O" && state.board[5].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     }
     
     if (state.board[6].owner === "X" && state.board[7].owner === "X" && state.board[8].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[6].owner === "O" && state.board[7].owner === "O" && state.board[8].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     }
     
 }
@@ -266,22 +278,33 @@ function checkVertical() {
     //     [2, 5, 8] 
 
     if (state.board[0].owner === "X" && state.board[3].owner === "X" && state.board[6].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
-        return 
+        return win;
     } else if (state.board[0].owner === "O" && state.board[3].owner === "O" && state.board[6].owner === "0") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     } 
     
     if (state.board[1].owner === "X" && state.board[4].owner === "X" && state.board[7].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[1].owner === "O" && state.board[4].owner === "O" && state.board[7].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     }
     
     if (state.board[2].owner === "X" && state.board[5].owner === "X" && state.board[8].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[2].owner === "O" && state.board[5].owner === "O" && state.board[8].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     }
 }
 
@@ -293,15 +316,23 @@ function checkDiagonal() {
     //     [2, 4, 6] 
 
     if (state.board[0].owner === "X" && state.board[4].owner === "X" && state.board[8].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[0].owner === "O" && state.board[4].owner === "O" && state.board[8].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     } 
     
     if (state.board[2].owner === "X" && state.board[4].owner === "X" && state.board[6].owner === "X") {
+        let win = "X has won!"
         console.log("X has won!")
+        return win;
     } else if (state.board[2].owner === "O" && state.board[4].owner === "O" && state.board[6].owner === "O") {
+        let win = "O has won!"
         console.log("O has won!")
+        return win;
     }
 
 }
