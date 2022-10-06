@@ -238,21 +238,21 @@ function checkHorizontal() {
     //     [3, 4, 5] 
     //     [6, 7, 8] 
 
-    if (state.board[0].owner && state.board[1].owner && state.board[2].owner === "X") {
+    if (state.board[0].owner === "X" && state.board[1].owner === "X" && state.board[2].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[0].owner && state.board[1].owner && state.board[2].owner === "0") {
+    } else if (state.board[0].owner === "O" && state.board[1].owner === "O" && state.board[2].owner === "0") {
         console.log("O has won!")
     } 
     
-    if (state.board[3].owner && state.board[4].owner && state.board[5].owner === "X") {
+    if (state.board[3].owner === "X" && state.board[4].owner === "X" && state.board[5].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[3].owner && state.board[4].owner && state.board[5].owner === "O") {
+    } else if (state.board[3].owner === "O" && state.board[4].owner === "O" && state.board[5].owner === "O") {
         console.log("O has won!")
     }
     
-    if (state.board[6].owner && state.board[7].owner && state.board[8].owner === "X") {
+    if (state.board[6].owner === "X" && state.board[7].owner === "X" && state.board[8].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[6].owner && state.board[7].owner && state.board[8].owner === "O") {
+    } else if (state.board[6].owner === "O" && state.board[7].owner === "O" && state.board[8].owner === "O") {
         console.log("O has won!")
     }
     
@@ -266,22 +266,22 @@ function checkVertical() {
     //     [1, 4, 7] 
     //     [2, 5, 8] 
 
-    if (state.board[0].owner && state.board[3].owner && state.board[6].owner === "X") {
+    if (state.board[0].owner === "X" && state.board[3].owner === "X" && state.board[6].owner === "X") {
         console.log("X has won!")
         return 
-    } else if (state.board[0].owner && state.board[3].owner && state.board[6].owner === "0") {
+    } else if (state.board[0].owner === "O" && state.board[3].owner === "O" && state.board[6].owner === "0") {
         console.log("O has won!")
     } 
     
-    if (state.board[1].owner && state.board[4].owner && state.board[7].owner === "X") {
+    if (state.board[1].owner === "X" && state.board[4].owner === "X" && state.board[7].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[1].owner && state.board[4].owner && state.board[7].owner === "O") {
+    } else if (state.board[1].owner === "O" && state.board[4].owner === "O" && state.board[7].owner === "O") {
         console.log("O has won!")
     }
     
-    if (state.board[2].owner && state.board[5].owner && state.board[8].owner === "X") {
+    if (state.board[2].owner === "X" && state.board[5].owner === "X" && state.board[8].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[2].owner && state.board[5].owner && state.board[8].owner === "O") {
+    } else if (state.board[2].owner === "O" && state.board[5].owner === "O" && state.board[8].owner === "O") {
         console.log("O has won!")
     }
 }
@@ -293,15 +293,15 @@ function checkDiagonal() {
     //     [0, 4, 8] 
     //     [2, 4, 6] 
 
-    if (state.board[0].owner && state.board[4].owner && state.board[8].owner === "X") {
+    if (state.board[0].owner === "X" && state.board[4].owner === "X" && state.board[8].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[0].owner && state.board[4].owner && state.board[8].owner === "0") {
+    } else if (state.board[0].owner === "O" && state.board[4].owner === "O" && state.board[8].owner === "O") {
         console.log("O has won!")
     } 
     
-    if (state.board[2].owner && state.board[4].owner && state.board[6].owner === "X") {
+    if (state.board[2].owner === "X" && state.board[4].owner === "X" && state.board[6].owner === "X") {
         console.log("X has won!")
-    } else if (state.board[2].owner && state.board[4].owner && state.board[6].owner === "O") {
+    } else if (state.board[2].owner === "O" && state.board[4].owner === "O" && state.board[6].owner === "O") {
         console.log("O has won!")
     }
 
