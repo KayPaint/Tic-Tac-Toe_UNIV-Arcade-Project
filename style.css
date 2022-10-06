@@ -54,7 +54,7 @@
 #player-name-status-div {
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content: center;
 }
 
 #player-name-status-div > h3 {
