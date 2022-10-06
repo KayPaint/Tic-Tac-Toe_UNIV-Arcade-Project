@@ -63,6 +63,7 @@ let playerTwoName = document.getElementById("playertwo-name-status");
 let playerTwoInput = document.getElementById("name-two-input");
 let cellDiv = document.getElementById("cell-div");
 let gridBoxes = document.getElementsByClassName("cell");
+let resetButton = document.getElementById("reset-button");
 
 //  STATE
 
@@ -79,25 +80,16 @@ function buildInitialState() {
 
     // Initial board
     state.board = [
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
-        { name: null, marked: false },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
+        { owner: null, marked: null },
     ];
-
-    
-    state.marks = [
-        // Stores plays made by Player One, AKA currentPlayer = 0
-        [],
-        // Stores plays made by Player Two, AKA currentPlayer = 1
-        []
-    ]
-    
 
 }
 
@@ -119,15 +111,12 @@ function renderState() {
         cellElement.classList.add("cell");
         // Add a data index of current loop index
         cellElement.dataset.index = [i];
+
+        if (state.board[i].marked === true) {
+            cellElement.innerText = state.board[i].owner
+        }
     }
-    // This was WIP
-    // if (state.board.marked = true) {
-    //     if (state.currentPlayer = 0) {
-    //         cellDiv.children.innerText = 'X';
-    //     } else if (state.currentPlayer = 1) {
-    //         cellDiv.children.innerText = 'O';
-    //     }
-    // }
+
 }
 
 // (User Input -> State)
@@ -136,26 +125,36 @@ function renderState() {
 // After modification trigger render
 function onBoardClick(clickedCellIdx) {
 
-    let cell = state.board[clickedCellIdx];
+    if (state.board[clickedCellIdx].marked === true) {
+        return;
+    } else {
+        // Sets cell 'marked' property to true;
+        state.board[clickedCellIdx].marked = true;
+        console.log("Target Marked:", state.board[clickedCellIdx].marked);
 
-    // Sets cell 'marked' property to true;
-    cell.marked = true;
+        // Sets cell 'owner' to the current player;
+        if (state.currentPlayer === 0) {
+            state.board[clickedCellIdx].owner = 'X';
+            console.log("Adding X...")
+        } else {
+            state.board[clickedCellIdx].owner = 'O';
+            console.log("Adding O...")
+        }
+        console.log("Target Owner:", state.currentPlayer);
 
-    // gives cell name the current player
-    //cell.name = state.currentPlayer;
-
-    // if current player is X, push their move into the corresponding marks array
-    if (state.currentPlayer = 0) {
-        state.marks[0].push(clickedCellIdx); 
-    }
-    
-    if (state.currentPlayer = 1) {
-        state.marks[1].push(clickedCellIdx);
     }
 
     // Switch Turns
+    console.log("Current Player:", state.currentPlayer)
+    console.log("Swapping turns...")
     swapTurns()
+    console.log("Current Player:", state.currentPlayer)
   
+    // Check for any victory conditions
+    checkHorizontal()
+    checkVertical()
+    checkDiagonal()
+
     // Run render
     renderState()
 }
@@ -169,7 +168,7 @@ function onePlayer() {
     // When the radio button "Player VS Computer" is clicked, run this function
 
     // If the user has selected Player VS Player
-    if (playerVSPlayer.checked = true) {
+    if (playerVSPlayer.checked === true) {
         // Set Player VS Player.checked to false
         playerVSPlayer.checked = false;
         // Set Player VS Computer.checked to true
@@ -177,7 +176,7 @@ function onePlayer() {
     }
 
     // Next, if Player VS Computer.checked is true
-    if (playerVSComputer.checked = true) {
+    if (playerVSComputer.checked === true) {
         // Hide visibility of the second name input
         playerTwoNameDiv.style.visibility = 'hidden';
         // Change second name status to "Computer"
@@ -190,7 +189,7 @@ function twoPlayer() {
     // When the radio button "Player VS Player" is clicked, run this function
 
     // If the user has selected Player VS Computer
-    if (playerVSComputer.checked = true) {
+    if (playerVSComputer.checked === true) {
         // Set Player VS Computer.checked to false
         playerVSComputer.checked = false;
         // Set Player VS Player.checked to true
@@ -198,7 +197,7 @@ function twoPlayer() {
     }
 
     // Next, if Player VS Player is checked
-    if (playerVSPlayer.checked = true) {
+    if (playerVSPlayer.checked === true) {
         // Show visibility of the second name input
         playerTwoNameDiv.style.visibility = 'visible';
         // Reset second name status to two player
@@ -230,19 +229,82 @@ function swapTurns() {
         return state.currentPlayer -= 1;
     }
 }
-    //     [0, 1, 2] // Win
-    //     [3, 4, 5] // Win
-    //     [4, 5, 6] // Win
-function checkForWin() {
 
+function checkHorizontal() {
+    console.log("Checking Horizontal")
+
+    //  Horizontal Wins
+    //     [0, 1, 2] 
+    //     [3, 4, 5] 
+    //     [6, 7, 8] 
+
+    if (state.board[0].owner && state.board[1].owner && state.board[2].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[0].owner && state.board[1].owner && state.board[2].owner === "0") {
+        console.log("O has won!")
+    } 
+    
+    if (state.board[3].owner && state.board[4].owner && state.board[5].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[3].owner && state.board[4].owner && state.board[5].owner === "O") {
+        console.log("O has won!")
+    }
+    
+    if (state.board[6].owner && state.board[7].owner && state.board[8].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[6].owner && state.board[7].owner && state.board[8].owner === "O") {
+        console.log("O has won!")
+    }
+    
 }
 
-function horizontalConditions() {
-    let winOne = [[1], [1], [2]];
-    let winTwo = [[3], [4], [5]];
-    let winThree = [[4], [5], [6]];
+function checkVertical() {
+    console.log("Checking Vertical")
 
+    //    Vertical Wins
+    //     [0, 3, 6] 
+    //     [1, 4, 7] 
+    //     [2, 5, 8] 
+
+    if (state.board[0].owner && state.board[3].owner && state.board[6].owner === "X") {
+        console.log("X has won!")
+        return 
+    } else if (state.board[0].owner && state.board[3].owner && state.board[6].owner === "0") {
+        console.log("O has won!")
+    } 
     
+    if (state.board[1].owner && state.board[4].owner && state.board[7].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[1].owner && state.board[4].owner && state.board[7].owner === "O") {
+        console.log("O has won!")
+    }
+    
+    if (state.board[2].owner && state.board[5].owner && state.board[8].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[2].owner && state.board[5].owner && state.board[8].owner === "O") {
+        console.log("O has won!")
+    }
+}
+
+function checkDiagonal() {
+    console.log("Checking Diagonal")
+
+    //    Diagonal Wins
+    //     [0, 4, 8] 
+    //     [2, 4, 6] 
+
+    if (state.board[0].owner && state.board[4].owner && state.board[8].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[0].owner && state.board[4].owner && state.board[8].owner === "0") {
+        console.log("O has won!")
+    } 
+    
+    if (state.board[2].owner && state.board[4].owner && state.board[6].owner === "X") {
+        console.log("X has won!")
+    } else if (state.board[2].owner && state.board[4].owner && state.board[6].owner === "O") {
+        console.log("O has won!")
+    }
+
 }
 
 
@@ -253,11 +315,18 @@ cellDiv.addEventListener('click', function (event) {
         return;
     }
     clickedCellIdx = event.target.id;
+    console.log("Target Index:", clickedCellIdx);
     onBoardClick(clickedCellIdx);
 
     renderState();
 });
 
+resetButton.addEventListener('click', function (event) {
+    buildInitialState()
+    renderState()
+})
+
 // FUNCTION CALL
 buildInitialState()
 renderState()
+
