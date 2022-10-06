@@ -35,7 +35,6 @@
 // Gameplay Flow
     // User selects 1 player or 2 players
     // User(s) enter names
-    // User clicks "Start Game"
     // buildInitialState runs
 
     // Player X always starts first  
@@ -329,4 +328,3 @@ resetButton.addEventListener('click', function (event) {
 // FUNCTION CALL
 buildInitialState()
 renderState()
-
