@@ -5,7 +5,7 @@
 // [Y] have our order chosen for us by the game
 // [Y] take turns placing our marks in empty spaces
 // [Y] not be able to place our marks in an occupied space
-// [] be told when a move causes a player to win, or to draw
+// [Y] be told when a move causes a player to win, or to draw
 // [Y] start the game over without having to reset the browser
 
 // As a user playing a one player game I want to:
@@ -45,10 +45,9 @@
     // Player 2 "O" clicks a square, adding O to that square
     // function checks for any win situations, otherwise change turn
 
-    // This continues
     // Upon win condition, display alert telling who won
 
-    // "Reset Game" resets to initialState
+    // "Reset Game" resets to initial state
 
 // DOM SELECTORS
 
@@ -61,8 +60,8 @@ let playerOneInput = document.getElementById("name-one-input");
 let playerTwoName = document.getElementById("playertwo-name-status");
 let playerTwoInput = document.getElementById("name-two-input");
 let cellDiv = document.getElementById("cell-div");
-let gridBoxes = document.getElementsByClassName("cell");
 let resetButton = document.getElementById("reset-button");
+let currentTurn = document.getElementById("current-turn-status");
 
 //  STATE
 
@@ -90,6 +89,9 @@ function buildInitialState() {
         { owner: null, marked: null },
     ];
 
+    // Used to announce game victory
+    state.victor;
+
 }
 
 // (State -> HTML)
@@ -114,8 +116,19 @@ function renderState() {
         if (state.board[i].marked === true) {
             cellElement.innerText = state.board[i].owner
         }
-    }
 
+        if (state.currentPlayer === 0) {
+            currentTurn.innerText = "Current Turn: X";
+        }
+        
+        if (state.currentPlayer === 1) {
+            currentTurn.innerText = "Current Turn: O";
+        }
+
+        if (state.victor) {
+            currentTurn.innerText = state.victor;
+        }
+    }
 }
 
 // (User Input -> State)
@@ -129,7 +142,6 @@ function onBoardClick(clickedCellIdx) {
     } else {
         // Sets cell 'marked' property to true;
         state.board[clickedCellIdx].marked = true;
-        console.log("Target Marked:", state.board[clickedCellIdx].marked);
 
         // Sets cell 'owner' to the current player;
         if (state.currentPlayer === 0) {
@@ -139,20 +151,15 @@ function onBoardClick(clickedCellIdx) {
             state.board[clickedCellIdx].owner = 'O';
             console.log("Adding O...")
         }
-        console.log("Target Owner:", state.currentPlayer);
 
     }
 
     // Switch Turns
-    console.log("Current Player:", state.currentPlayer)
     console.log("Swapping turns...")
     swapTurns()
-    console.log("Current Player:", state.currentPlayer)
   
     // Check for any victory conditions
-    checkHorizontal()
-    checkVertical()
-    checkDiagonal()
+    check()
 
     // Run render
     renderState()
@@ -229,8 +236,11 @@ function swapTurns() {
     }
 }
 
+function resetCurrentTurn() {
+    currentTurn.innerText = "Current Turn: X";
+}
+
 function checkHorizontal() {
-    console.log("Checking Horizontal")
 
     //  Horizontal Wins
     //     [0, 1, 2] 
@@ -270,7 +280,6 @@ function checkHorizontal() {
 }
 
 function checkVertical() {
-    console.log("Checking Vertical")
 
     //    Vertical Wins
     //     [0, 3, 6] 
@@ -309,7 +318,6 @@ function checkVertical() {
 }
 
 function checkDiagonal() {
-    console.log("Checking Diagonal")
 
     //    Diagonal Wins
     //     [0, 4, 8] 
@@ -337,6 +345,22 @@ function checkDiagonal() {
 
 }
 
+function check() {
+    let checkHorizontalVar = checkHorizontal();
+    let checkVerticalVar = checkVertical();
+    let checkDiagonalVar = checkDiagonal();
+    
+    if (checkHorizontalVar != undefined) {
+        state.victor = checkHorizontalVar
+        return checkDiagonalVar;
+    } else if (checkVerticalVar != undefined) {
+        state.victor = checkVerticalVar
+        return checkVerticalVar;
+    } else if (checkDiagonalVar != undefined) {
+        state.victor = checkDiagonalVar;
+        return checkDiagonalVar;
+    }
+}
 
 // EVENT LISTENERS
 
@@ -352,10 +376,11 @@ cellDiv.addEventListener('click', function (event) {
 });
 
 resetButton.addEventListener('click', function (event) {
-    buildInitialState()
-    renderState()
+    resetCurrentTurn();
+    buildInitialState();
+    renderState();
 })
 
 // FUNCTION CALL
-buildInitialState()
-renderState()
+buildInitialState();
+renderState();
